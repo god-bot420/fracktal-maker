@@ -1,0 +1,137 @@
+from turtle import *
+
+screen = Screen()
+shape("turtle")
+speed(0)
+
+my_start = (0,250)
+penup()
+setx(my_start[0])
+sety(my_start[1])
+pendown()
+
+def tree(size, levels, angle):
+	if levels == 0:
+		color("red")
+		dot()
+		color("red")
+		return
+
+	forward(size)
+	right(angle)
+	tree(size*0.8, levels - 1, angle)
+	left(angle * 2)
+	tree(size * 0.7, levels - 1, angle)
+	right(angle)
+	tree(size * 0.7, levels - 1, angle)#extra final stems
+	backward(size)
+	tree(size, levels - 1, angle)#extra branches
+	#left(angle * 2)
+	#tree(size * 0.8, levels - 1, angle)
+	#right(angle)
+
+
+def snowflake_side(length, levels):
+	if levels == 0:
+		forward(length)
+		return
+	length /= 2.5
+	snowflake_side(length, levels - 1)
+	left(60)
+	snowflake_side(length, levels - 1)
+	right(120)
+	snowflake_side(length, levels - 1)
+	left(60)
+	snowflake_side(length, levels - 1)
+
+
+def create_snowflake(sides, length):
+
+	colors = ["red", "black" , "blue"]
+	for i in range(sides):
+		color(colors[i])
+		snowflake_side(length, sides)
+		right(360 / sides)
+
+left(270)
+
+
+tree(150, 4, 30)
+# my_start = (0,0)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# create_snowflake(3, 100)
+# my_start = (100,0)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(100,0)
+# create_snowflake(3, 100)
+# my_start = (100,100)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(100,100)
+# create_snowflake(3, 100)
+# my_start = (0,100)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(0,100)
+# create_snowflake(3, 100)
+# my_start = (0,200)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(0,200)
+# create_snowflake(3, 100)
+# my_start = (200,200)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(200,200)
+# create_snowflake(3, 100)
+# my_start = (200,0)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(200,0)
+# create_snowflake(3, 100)
+
+# my_start = (-100,0)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(-100,0)
+# create_snowflake(3, 100)
+# my_start = (-100,-100)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(-100,-100)
+# create_snowflake(3, 100)
+# my_start = (0,-100)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(0,-100)
+# create_snowflake(3, 100)
+# my_start = (0,-200)
+# penup()
+# setx(my_start[0])
+# sety(my_start[1])
+# pendown()
+# goto(0,-200)
+# create_snowflake(3, 100)
+mainloop()
